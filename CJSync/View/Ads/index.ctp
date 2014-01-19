@@ -38,7 +38,7 @@ if (sizeof($ads)>0) {
 	<?php echo $this->Form->create('Ad', array('url'=>array('plugin'=>'CJSync', 'controller'=>'Ads', 'action'=>'index'))); ?>
 	<div style="text-align:right;">
 		
-		<b>With Checked:</b> <?php echo $this->Form->button('Delete'); ?> 
+		<b>With Checked:</b> <?php echo $this->Form->button('Delete', array('name'=>'delete_ads', 'value'=>'delete')); ?> 
 		<div class="cj_panel">
 			<?php echo $this->Form->select('pool_to_add_to', $pools_list, array('label'=>false, 'div'=>false)); ?>
 			<?php echo $this->Form->button('Add To Pool', array('name'=>'add_to_pool', 'value'=>'add_to_pool')); ?>

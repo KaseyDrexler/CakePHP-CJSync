@@ -50,6 +50,17 @@ class AdsController extends CJSyncAppController {
 				$this->Session->setFlash('Ads added to pool');
 			} 
 			
+			if (isset($_POST['delete_ads'])) {
+			
+				$this->loadModel('CJSync.Ad');
+				$this->loadModel('CJSync.AdsToPool');
+				foreach($this->request->data['Ad']['ids'] as $id ) {
+					$this->AdsToPool->deleteAll(array('ads_id'=>$id));
+					$this->Ad->deleteAll(array('id'=>$id));
+				}
+				$this->Session->setFlash('Ads deleted');
+			} 
+			
 			if (isset($_POST['ad_pool'])) {
 				//pr($this->request->data);
 				if ($this->request->data['Ad']['ad_pool_name']!='') {
@@ -86,12 +97,22 @@ class AdsController extends CJSyncAppController {
 		
 		
 		if (!empty($this->request->data)) {
+		
+			
+		
 			if (sizeof($this->request->data['Ad']['ids'])>0) {
 				foreach($this->request->data['Ad']['ids'] as $id) {
 					$this->AdsToPool->deleteAll(array('id'=>$id));
 				}
 			}
-			$this->Session->setFlash('Ad removed from pool');
+			if (isset($_POST['delete_pool'])) {
+				$this->AdsToPool->deleteAll(array('ad_pools_id'=>(int)$pool_id));
+				$this->AdPool->deleteAll(array('id'=>(int)$pool_id));
+				$this->Session->setFlash('Pool deleted');
+				$this->redirect(array('plugin'=>'CJSync', 'controller'=>'Ads', 'action'=>'index'));
+			}
+			
+			$this->Session->setFlash('Ad(s) removed from pool');
 		}
 		
 		

@@ -7,48 +7,60 @@ echo $this->Html->script('CJSync.cjsync');
 
 <h1><?php echo $pool['AdPool']['name']; ?></h1>
 
-
-
-<textarea cols="40" rows="10">
-
-<div id="random_layer_name" style="border:1px solid red;padding:10px;">
-<!-- if you need multiple ad pool layers change the div id. Change random_layer_name in the id and in the updateAdPanel javascript code //-->
-
-<script language="javascript">
-updateAdPanel('random_layer_name', <?php echo $pool['AdPool']['id']; ?>);
-setInterval(function () {
+<table cellpadding="0" cellspacing="0">
+<tr>
+  <td valign="top">
+	
+	<textarea cols="40" rows="10">
+	
+	<div id="random_layer_name">
+	<!-- if you need multiple ad pool layers change the div id. Change random_layer_name in the id and in the updateAdPanel javascript code //-->
+	
+	<script language="javascript">
 	updateAdPanel('random_layer_name', <?php echo $pool['AdPool']['id']; ?>);
-	},
-	10000); 
-
+	setInterval(function () {
+		updateAdPanel('random_layer_name', <?php echo $pool['AdPool']['id']; ?>);
+		},
+		10000); 
+	
+			
 		
 	
-
-</script>
-
-</div>
-
-
-</textarea>
-
-<p><b>Example:</b></p>
-<div id="random_layer_name" style="border:1px solid red;padding:10px;">
-
-<script language="javascript">
-updateAdPanel('random_layer_name', <?php echo $pool['AdPool']['id']; ?>);
-setInterval(function () {
+	</script>
+	
+	</div>
+	
+	
+	</textarea>
+	
+	<p><b>Example:</b></p>
+	<div id="random_layer_name" style="border:1px solid red;padding:10px;">
+	
+	<script language="javascript">
 	updateAdPanel('random_layer_name', <?php echo $pool['AdPool']['id']; ?>);
-	},
-	10000); 
-
+	setInterval(function () {
+		updateAdPanel('random_layer_name', <?php echo $pool['AdPool']['id']; ?>);
+		},
+		10000); 
+	
+			
 		
 	
-
-</script>
-
-</div>
-
-
+	</script>
+	
+	</div>
+  </td>
+  
+  <td style="width:20px;"></td>
+  
+  <td valign="top">
+  
+  	<?php echo $this->Form->create('Ad', array('url'=>array('plugin'=>'CJSync', 'controller'=>'Ads', 'action'=>'pool', $pool['AdPool']['id']))); ?>
+  	<?php echo $this->Form->button('Delete Pool', array('value'=>'delete', 'name'=>'delete_pool')); ?>
+	<?php echo $this->Form->end(); ?>
+  </td>
+</tr>
+</table>
 
 
 <p><b>Number of Ads:</b> <?php echo sizeof($ads); ?></p>
