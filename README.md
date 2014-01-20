@@ -28,7 +28,9 @@ To include your code.
 
 3. Run tables.sql to create the three needed tables.
 
-4. Navigate to http://yoursite/Ads/index
+4. Create some sort of security. I put a check to see if the "admin" session variable exists in /CJSync/Controller/AdsController.php beforeFilter function.
+You will need to populate that session variable or delete the check in the beforeFilter function of the AdsController.php.
+Navigate to http://yoursite/Ads/index
 
 5. Sync the ads to your database from the interface.
 

@@ -27,8 +27,13 @@ class AdsController extends CJSyncAppController {
 
 
 		} else {
-
-			$this->redirect('/');
+			if (($this->params['action']=='randomAd') || ($this->params['action']=='random_ad') ||
+				($this->params['action']=='viewAd') || ($this->params['action']=='view_ad') ||
+				($this->params['action']=='displayPool') || ($this->params['action']=='display_pool')) {
+			
+			} else {
+				$this->redirect('/');
+			}
 
 		}
 
