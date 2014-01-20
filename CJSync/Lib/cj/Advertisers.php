@@ -72,7 +72,7 @@ class Advertisers {
 
 	private function getLinksXML($advertiser_id) {
 
-		$ch = curl_init("https://linksearch.api.cj.com/v2/link-search?advertiser-ids=".$advertiser_id."&website-id=7207317");
+		$ch = curl_init("https://linksearch.api.cj.com/v2/link-search?advertiser-ids=".$advertiser_id."&website-id=".Configure::read('CJ.website_id'));
 
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 

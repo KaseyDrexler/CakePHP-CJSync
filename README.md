@@ -7,7 +7,7 @@ Date: 1/19/2014
 
 A CakePHP Plugin for importing Commission Junction Ads Automatically.
 You can then create Ad Pools that will rotate between all ads in the pool.
-
+I Built this in 2 days. So, sorry if it is not as full featured as you would like. I will add improvements over time.
 
 
 
@@ -19,7 +19,8 @@ CakePlugin::load(array('CJSync'));
 
 2. Modify the core.php file in the plugin to use your CJ authentication code. 
 Open CJSync/Config/core.php and modify Configure::write('CJ.Authorization', ''); 
-To include your code.
+To include your code. You will also need your website id for Configure::write('CJ.website_id', '');  
+You can find this in cj.com by clicking on Account tab then Websites tab.
 
 3. Include cjsync.js in your layout. Put the following code in your defautl.ctp layout
 
