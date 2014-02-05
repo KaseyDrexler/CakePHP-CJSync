@@ -15,7 +15,7 @@ You will need to do a couple of things to get the plugin to work.
 
 1. Add the following line to your app/Config/bootstrap.php file
 
-CakePlugin::load(array('CJSync'));
+CakePlugin::load('CJSync', array('bootstrap'=>array('core'), 'routes'=>true, 'core'=>true));
 
 2. Modify the core.php file in the plugin to use your CJ authentication code. 
 Open CJSync/Config/core.php and modify Configure::write('CJ.Authorization', ''); 
